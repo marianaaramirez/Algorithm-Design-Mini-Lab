@@ -1,15 +1,6 @@
-// Problem A -- Inversion Counter for Quality Control
-//
+// Problem A  Inversion Counter for Quality Control
 // Technique used: DIVIDE & CONQUER (merge sort).
-//
-// Idea: A brute-force O(n^2) scan of every pair is too slow for n up to
-// 2*10^5. Instead we count inversions while merge-sorting the array.
-// When merging two already-sorted halves, every time we take an element
-// from the RIGHT half before the LEFT half is exhausted, that right
-// element is smaller than ALL remaining elements in the left half, so it
-// forms an inversion with each of them. We add that count in O(1) per
-// step, giving O(n log n) total.
-//
+// Idea: A brute-force $O(n^2)$ scan of every pair is too slow for $n$ up to $2 \times 10^5$. Instead, we count inversions while merge-sorting the array. When merging two already-sorted halves, every time we take an element from the right half before the left half is exhausted, that right element is smaller than all remaining elements in the left half, so it forms an inversion with each of them. We add that count in $O(1)$ per step, giving $O(n \log n)$ total.
 // Input:
 //   n
 //   a1 a2 ... an
