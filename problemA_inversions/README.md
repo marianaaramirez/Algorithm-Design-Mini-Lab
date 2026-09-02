@@ -1,6 +1,6 @@
-# Problem A — Inversion Counter for Quality Control
+# Problem A Inversion Counter for Quality Control
 
-Counts the number of inversions in an array (pairs `i < j` with `A[i] > A[j]`).
+Counts the number of inversions in an array (pairs i < j with A[i] > A[j]).
 
 Approach: **divide & conquer** — merge sort, counting cross-inversions during
 each merge step. Runs in O(n log n).
