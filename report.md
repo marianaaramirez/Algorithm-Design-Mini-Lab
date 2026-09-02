@@ -92,16 +92,16 @@ Output: `3` — matches the expected result.
 ### Complexity analysis
 
 - **Time (worst case):** The recursion follows the standard merge-sort
-  recurrence `T(n) = 2T(n/2) + O(n)` (the `O(n)` is the merge step, which
+  recurrence T(n) = 2T(n/2) + O(n) (the O(n) is the merge step, which
   does a constant amount of work per element). By the Master Theorem this
-  solves to **`O(n log n)`**. This is worst-case, not just average-case,
+  solves to **O(n log n)**. This is worst-case, not just average-case,
   since merge sort's cost doesn't depend on the input's order.
-- **Space:** `O(n)` for the temporary merge buffer, plus `O(log n)` for
-  the recursion stack (the recursion depth is `log2(n)` since each call
-  halves the range). Overall auxiliary space is **`O(n)`**.
-- **Why 64-bit:** with `n = 2*10^5`, the maximum possible inversion count
-  is `n*(n-1)/2 ≈ 2*10^10`, which overflows a 32-bit signed integer, so
-  the running/returned count uses `long long` (`ll`).
+- **Space:** O(n) for the temporary merge buffer, plus O(log n) for
+  the recursion stack (the recursion depth is log2(n) since each call
+  halves the range). Overall auxiliary space is **O(n)**.
+- **Why 64-bit:** with n = 2*10^5, the maximum possible inversion count
+  is n*(n-1)/2 ≈ 2*10^10, which overflows a 32-bit signed integer, so
+  the running/returned count uses long long (ll).
 
 ---
 
@@ -118,7 +118,7 @@ exactly when the other starts) are **not** considered overlapping.
 
 This is a **greedy** problem. Instead of thinking about which specific
 meeting goes in which room, we only need to know the maximum number of
-meetings that are simultaneously "in progress" at any instant — that
+meetings that are simultaneously "in progress" at any instant that
 number is exactly the minimum number of rooms required.
 
 To find that peak, treat every start time as a `+1` event (need a room)
@@ -126,11 +126,11 @@ and every end time as a `-1` event (a room frees up). Sort the starts and
 the ends separately, then walk through the starts in order; for each
 start, first free up any room whose meeting has already ended by (`<=`)
 that start time. If no room is free, open a new one. Track the maximum
-number of rooms in use at any time — that's the answer.
+number of rooms in use at any time that's the answer.
 
 **Greedy-choice property:** freeing the earliest-ending room whenever
 possible is always safe, because a room that's already free can host any
-meeting starting at or after that point — there's never a reason to open
+meeting starting at or after that point there's never a reason to open
 a new room while an existing one is already free.
 
 ### Pseudocode
@@ -263,25 +263,25 @@ Output: `14` — matches the expected result.
 
 ### Complexity analysis
 
-- **Time (worst case):** Two nested loops — outer over `n` modules, inner
-  over budgets `1..T` — giving **`O(n * T)`**. With `n = 2000` and
-  `T = 5000`, that's about `10^7` operations, comfortably fast. This is a
-  tight bound (not just average case): every `(module, budget)` cell is
+- **Time (worst case):** Two nested loops — outer over n modules, inner
+  over budgets 1..T giving **O(n * T)**. With n = 2000 and
+  T = 5000, that's about 10^7 operations, comfortably fast. This is a
+  tight bound (not just average case): every (module, budget) cell is
   visited exactly once regardless of input values.
-- **Space:** Using a 1D rolling array of size `T + 1` (updated in
-  decreasing order per module) rather than a full 2D `n x T` table gives
-  **`O(T)`** space instead of `O(n * T)`. This is valid specifically
+- **Space:** Using a 1D rolling array of size T + 1 (updated in
+  decreasing order per module) rather than a full 2D n x T table gives
+  **O(T)** space instead of O(n * T). This is valid specifically
   *because* of the downward iteration, which recreates the effect of
   "looking only at the previous row" of the classic 2D DP table.
   Justification via DP table size: the standard formulation is a table
-  `dp[i][b]` of size `(n+1) x (T+1)`, where each cell depends only on the
-  row above it (`dp[i-1][...]`); collapsing it to one row is a standard
+  dp[i][b] of size (n+1) x (T+1), where each cell depends only on the
+  row above it (dp[i-1][...]); collapsing it to one row is a standard
   space optimization since we never need rows older than "the previous
   one."
-- **Correctness sketch:** By induction on `i`, after processing the first
-  `i` modules, `dp[b]` holds the optimal value using any subset of those
-  `i` modules with total time `<= b`. The recurrence
-  `dp[i][b] = max(dp[i-1][b], dp[i-1][b - time[i]] + value[i])` directly
+- **Correctness sketch:** By induction on i, after processing the first
+  i modules, dp[b] holds the optimal value using any subset of those
+  i modules with total time <= b. The recurrence
+  dp[i][b] = max(dp[i-1][b], dp[i-1][b - time[i]] + value[i]) directly
   encodes "skip module i" vs. "take module i," which are the only two
   choices for a 0/1 item — so the DP explores exactly the necessary
   subset space without brute-force enumeration.
