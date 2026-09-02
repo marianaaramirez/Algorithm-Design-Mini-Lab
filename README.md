@@ -6,9 +6,9 @@ technique:
 
 | Folder                | Problem                          | Technique        |
 |------------------------|-----------------------------------|-------------------|
-| `problemA_inversions/` | Count inversions in an array      | Divide & conquer  |
-| `problemB_rooms/`      | Minimum meeting rooms needed      | Greedy            |
-| `problemC_knapsack/`   | Budgeted study plan (0/1 knapsack)| Dynamic programming |
+| problemA_inversions/ | Count inversions in an array      | Divide & conquer  |
+| problemB_rooms/      | Minimum meeting rooms needed      | Greedy            |
+| problemC_knapsack/    | Budgeted study plan (0/1 knapsack)| Dynamic programming |
 
 Full write-up (idea, pseudocode, worked example, complexity analysis) for
 each problem is in [`report.md`](./report.md).
