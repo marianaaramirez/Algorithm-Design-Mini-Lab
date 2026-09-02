@@ -1,4 +1,4 @@
-# Problem B — Minimum Meeting Rooms (Scheduling)
+# Problem B  Minimum Meeting Rooms (Scheduling)
 
 Computes the minimum number of rooms needed to host `m` meetings without
 overlap.
