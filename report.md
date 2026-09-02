@@ -28,7 +28,7 @@ element: every time the element we pick comes from the **right** half
 before the left half is exhausted, that element is smaller than *all* the
 remaining elements in the left half — each of those forms an inversion
 with it. We can count all of them in one step (no need to check them one
-by one), which is what keeps the merge step `O(n)` instead of `O(n^2)`.
+by one), which is what keeps the merge step O(n) instead of O(n^2).
 
 Total inversions = (inversions fully inside left half) + (inversions
 fully inside right half) + (inversions crossing the two halves, found
@@ -109,7 +109,7 @@ Output: `3` — matches the expected result.
 
 ### Problem summary
 
-Given `m` meetings, each with a start and end time, find the minimum
+Given m meetings, each with a start and end time, find the minimum
 number of rooms needed so that no room ever hosts two overlapping
 meetings at once. Two meetings that touch at a single point (one ends
 exactly when the other starts) are **not** considered overlapping.
@@ -180,11 +180,11 @@ freed up first).
 ### Complexity analysis
 
 - **Time (worst case):** Sorting the starts and ends dominates:
-  `O(m log m)`. The subsequent sweep visits each start and each end
-  exactly once, so it's `O(m)`. Total: **`O(m log m)`**.
-- **Space:** The two sorted arrays of size `m` are the only extra
+  O(m log m). The subsequent sweep visits each start and each end
+  exactly once, so it's O(m). Total: **O(m log m)**.
+- **Space:** The two sorted arrays of size m are the only extra
   storage (aside from sort's own working space), so auxiliary space is
-  **`O(m)`**.
+  **O(m)**.
 - **Correctness / greedy justification:** At any instant, the number of
   rooms needed is exactly the number of meetings currently in progress
   (an exchange argument shows you can never do better than the peak
@@ -197,29 +197,29 @@ freed up first).
 
 ### Problem summary
 
-There are `n` study modules, each costing `time[i]` hours and worth
-`value[i]` points, and a total time budget `T`. Each module can be taken
+There are n study modules, each costing time[i] hours and worth
+value[i] points, and a total time budget T. Each module can be taken
 at most once (0/1 — no partial credit, no repeats). The goal is to choose
 a subset of modules that maximizes total value without the total time
-exceeding `T`. This is the classic 0/1 knapsack problem.
+exceeding T. This is the classic 0/1 knapsack problem.
 
 ### Algorithm idea
 
 This is a **dynamic programming** problem, since brute-force subset
-enumeration is `2^n`, infeasible for `n` up to 2000. Define
-`dp[b]` = the best total value achievable using a time budget of at most
-`b` hours, considering the modules processed so far.
+enumeration is 2^n, infeasible for n up to 2000. Define
+dp[b] = the best total value achievable using a time budget of at most
+b hours, considering the modules processed so far.
 
-Process modules one at a time. For each module `i`, we either skip it
-(value stays `dp[b]`) or take it (value becomes `dp[b - time[i]] +
-value[i]`, only possible if `b >= time[i]`); `dp[b]` is updated to the
+Process modules one at a time. For each module i, we either skip it
+(value stays dp[b]) or take it (value becomes dp[b - time[i]] +
+value[i], only possible if b >= time[i]); dp[b] is updated to the
 better of the two. To guarantee each module is used **at most once**
-(0/1, not unbounded), the inner loop over budgets must go from `T` down
-to `time[i]` — updating in decreasing order ensures `dp[b - time[i]]`
-still refers to a state from *before* module `i` was considered, so
-module `i` can't be "reused" within the same pass.
+(0/1, not unbounded), the inner loop over budgets must go from T down
+to time[i] updating in decreasing order ensures dp[b - time[i]]
+still refers to a state from *before* module i was considered, so
+module i can't be "reused" within the same pass.
 
-After all `n` modules are processed, `dp[T]` is the answer.
+After all n modules are processed, dp[T] is the answer.
 
 ### Pseudocode
 
