@@ -13,11 +13,6 @@ technique:
 Full write-up (idea, pseudocode, worked example, complexity analysis) for
 each problem is in [`report.md`](./report.md).
 
-## Requirements
-
-- A C++17 compiler (e.g. `g++` from GCC 9+, or `clang++`).
-- No external libraries — everything uses the standard library only.
-
 ## How to build and run each problem
 
 All three programs read from **stdin** and write to **stdout** (no
