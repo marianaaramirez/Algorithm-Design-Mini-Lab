@@ -15,11 +15,10 @@ each problem is in [`report.md`](./report.md).
 
 ## How to build and run each problem
 
-All three programs read from **stdin** and write to **stdout** (no
-interactive prompts), so you can pipe a file in or type input followed by
-EOF (Ctrl+D).
+All three programs read from **stdin** and write to **stdout** , so you can pipe a file in or type input followed by
+EOF.
 
-### Problem A — Inversion Counter
+### Problem A  Inversion Counter
 
 ```bash
 cd problemA_inversions
@@ -29,7 +28,7 @@ echo "5
 # -> 3
 ```
 
-### Problem B — Minimum Meeting Rooms
+### Problem B  Minimum Meeting Rooms
 
 ```bash
 cd problemB_rooms
@@ -41,7 +40,7 @@ echo "3
 # -> 2
 ```
 
-### Problem C — Budgeted Study Plan (0/1 Knapsack)
+### Problem C  Budgeted Study Plan (0/1 Knapsack)
 
 ```bash
 cd problemC_knapsack
@@ -55,8 +54,8 @@ echo "3 10
 
 ## Running the tests
 
-Each `problemX/` folder has a `tests/` directory with at least three
-input/output pairs (`testN.in` / `testN.out`) and a `run_tests.sh` script
+Each problemX/ folder has a `tests/` directory with at least three
+input/output pairs (testN.in / testN.out) and a `run_tests.sh` script
 that compiles the program and diffs its output against every pair.
 
 ```bash
@@ -65,14 +64,14 @@ cd ../problemB_rooms   && chmod +x tests/run_tests.sh && ./tests/run_tests.sh
 cd ../problemC_knapsack && chmod +x tests/run_tests.sh && ./tests/run_tests.sh
 ```
 
-Expected output for each: `Passed: N, Failed: 0`.
+Expected output for each: Passed: N, Failed: 0.
 
 ## Assumptions
 
 - Input is well-formed and matches the stated I/O format exactly (no
   malformed-input handling is required per the assignment).
 - All counts/sums that could exceed 32 bits (inversion count, knapsack
-  value) are stored as `long long`.
+  value) are stored as long long.
 - Problem B: a meeting that ends exactly when another starts does **not**
   count as an overlap (they can share a room).
 - Problem C: each module can be selected at most once (0/1 knapsack, not
