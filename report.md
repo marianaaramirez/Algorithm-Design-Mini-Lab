@@ -1,19 +1,19 @@
-# Report — Algorithm Design Mini-Lab
+# Report Algorithm Design Mini-Lab
 
 This report covers all three problems: the idea behind each solution,
 pseudocode, a worked example, and a complexity analysis.
 
 ---
 
-## Problem A — Inversion Counter for Quality Control
+## Problem A  Inversion Counter for Quality Control
 
 ### Problem summary
 
-Given an array `A` of `n` integers, an inversion is a pair of indices
-`i < j` such that `A[i] > A[j]` — i.e., a "quality" defect where a later
+Given an array A of n integers, an inversion is a pair of indices
+i < j such that A[i] > A[j] meaning, a "quality" defect where a later
 element is smaller than an earlier one. The task is to count how many
 such pairs exist. A naive check of every pair is `O(n^2)`, which is too
-slow for `n` up to `2 * 10^5`, so we need something closer to `O(n log n)`.
+slow for n up to 2 * 10^5, so we need something closer to `O(n log n)`.
 
 ### Algorithm idea
 
@@ -105,7 +105,7 @@ Output: `3` — matches the expected result.
 
 ---
 
-## Problem B — Minimum Meeting Rooms (Scheduling)
+## Problem B  Minimum Meeting Rooms (Scheduling)
 
 ### Problem summary
 
@@ -193,7 +193,7 @@ freed up first).
 
 ---
 
-## Problem C — Budgeted Study Plan (0/1 Knapsack Variant)
+## Problem C  Budgeted Study Plan (0/1 Knapsack Variant)
 
 ### Problem summary
 
